@@ -7,6 +7,7 @@
 ## Introduction
 In the PID control projects, it is observed the control paradigm of responding to previously accumulated and instantaneous errors cannot cope with fast changing road curves especially in higher speed. In this project, a predictive model is included in the control and the actuation values are optimized for predicted errors. In addition, an actuation is applied with a propagation and processing delay. It is known PID controller cannot handle control latency well. But a Model Predictive Controller (MPC) can cope with the latency issue by incorporating the latency into the model. 
 
+A video demo can be found here: https://youtu.be/ZyTTf_IEPEM
 
 ## Implementation
 The implementation of the MPC consists of the followings steps:
