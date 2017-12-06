@@ -3,6 +3,8 @@
 
 #include <vector>
 #include "Eigen-3.3/Eigen/Core"
+#include <iostream>
+
 
 using namespace std;
 
