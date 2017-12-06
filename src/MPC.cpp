@@ -7,7 +7,7 @@ using CppAD::AD;
 
 ///  Set the timestep length and duration
 size_t N = 15;
-double dt = 0.15;
+double dt = 0.20;
 
 // This value assumes the model presented in the classroom is used.
 //
@@ -22,8 +22,9 @@ double dt = 0.15;
 const double Lf = 2.67;
 
 // set reference speed in m/s
-// set to 44.704 m/s = 100 mph
-const double ref_v = 44.704;
+// set to 40.234 m/s = 90 mph
+const double ref_v = 40.234;
+//const double ref_v = 100;
 
 // set start location for each variable
 size_t x_start = 0;
@@ -52,14 +53,14 @@ class FG_eval {
 
     // penalty for state
     for (int i = 0; i < N; i++) {
-      fg[0] += 5000 * CppAD::pow(vars[cte_start + i], 2);       // squared error of cte
-      fg[0] += 500 * CppAD::pow(vars[epsi_start + i], 2);      // squared error of psi
+      fg[0] += 8000 * CppAD::pow(vars[cte_start + i],  2);       // squared error of cte
+      fg[0] += 1000 * CppAD::pow(vars[epsi_start + i], 2);      // squared error of psi
       fg[0] += CppAD::pow(vars[v_start + i] - ref_v, 2);        // squared error of reference speed
     }
     // penalty for control input
     for (int i = 0; i < N - 1; i++) {
       fg[0] += 10 * CppAD::pow(vars[delta_start + i], 2);   // penalize large delta
-      fg[0] += 1 * CppAD::pow(vars[a_start + i], 2);       // penalize large a
+      fg[0] += 100 * CppAD::pow(vars[a_start + i], 2);       // penalize large a
     }
 
     for (int i = 0; i < N - 2; i++) {
